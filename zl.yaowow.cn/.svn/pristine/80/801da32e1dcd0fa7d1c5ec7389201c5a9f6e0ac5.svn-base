@@ -1,6 +1,0 @@
-@charset "UTF-8";
-@import "reset";
-@import "mixins";
-@import "variable";
-@import "common";
-@import "button";
