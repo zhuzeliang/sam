@@ -1,0 +1,36 @@
+@charset "UTF-8";
+@import "reset";
+@import "mixins";
+@import "variable";
+@import "common";
+@import "button";
+@import "dropload";
+.recommend-list{
+	padding: 0 0.30rem;
+}
+.recommend{
+	margin-top:0.30rem;
+	background:#fff;
+	-webkit-box-shadow: 0 0 10px #d3d3d3;
+            box-shadow: 0 0 10px #d3d3d3;
+	.recommend-img{
+		img{
+			display:block;
+			height: 2.45rem;
+			width: 100%;
+		}
+	}
+	.recommend-text{
+		@include flexbox;
+		@include vertical-layout(center);
+		padding:0.20rem 0.20rem;
+		color:$sub-font-color;
+		.recommend-text-reduce{
+			width: 2.50rem;
+		}
+		.recommend-text-back{
+			@include flex(1);
+			margin:0 0.15rem;
+		}
+	}
+}

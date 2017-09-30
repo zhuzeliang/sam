@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>推荐码详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/recommend-detail.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="code-detail">
+            <div class="cut-box">
+                <div class="cut-text-box">
+                    <input type="text" value="AABBCCDD" readonly id="cut-text" />
+                </div>
+                <a href="###" class="cut-btn" id="cut-btn">复制</a>
+            </div>
+            <div class="can-use">可用商品：中凌铂金炫彩贴膜</div>
+        </div>
+        <div class="code-tips">
+            <p>使用须知：</p>
+            <p>1.本推荐码仅本账号外的账号在线支付相关商品订单时使用。</p>
+            <p>2.使用推荐码结算可立减金额。</p>
+            <p>3.使用了该推荐码的订单交易完成后您将获得该推荐码对应的返现，可在个人中心中操作提现至您的银行卡。</p>
+            <p>4.每种类型的推荐码每账号仅限生成一次，在30天内没有使用则自动生效。</p>
+        </div>
+    </div>
+</body>
+<script>
+//复制黏贴功能  兼容高版本安卓/IOS;
+var cutBtn = document.querySelector('#cut-btn');
+cutBtn.addEventListener('click', function() {
+    var cutText = document.querySelector('#cut-text');
+    var currentFocus = document.activeElement;
+    cutText.focus();
+    cutText.setSelectionRange(0, cutText.value.length);
+    try {
+        var msg = document.execCommand('copy') ? '成功' : '失败';
+        alert('复制内容 ' + msg)
+    } catch (err) {
+        alert('不能使用这种方法复制内容，请长按您想要复制的内容进行复制')
+    }
+    currentFocus.focus();
+});
+
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>推荐码详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/recommend-detail.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="code-detail">
+            <div class="cut-box">
+                <div class="cut-text-box">
+                    <input type="text" value="AABBCCDD" readonly  id="cut-text" />
+                </div>
+                <a href="###" class="cut-btn" id="cut-btn">复制</a>
+            </div>
+            <div class="can-use">可用商品：中凌铂金炫彩贴膜</div>
+        </div>
+        <div class="code-tips">
+            <p class="code-tip">使用须知：</p>
+            <p class="code-tip">1.本推荐码仅本账号外的账号在线支付相关商品订单时使用</p>
+        </div>
+    </div>
+</body>
+<script>
+//复制黏贴功能  兼容高版本安卓/IOS;
+var cutBtn = document.getElementById('cut-btn');
+cutBtn.addEventListener('click', function() {
+    var cutText = document.getElementById('cut-text');
+    var currentFocus = document.activeElement;
+    cutText.focus();
+    cutText.setSelectionRange(0, cutText.value.length);
+    try {
+        var msg = document.execCommand('copy') ? '成功' : '失败'
+        alert('复制内容 ' + msg)
+    } catch (err) {
+        alert('不能使用这种方法复制内容')
+    }
+    // document.execCommand('copy', true);
+    currentFocus.focus();
+});
+</script>
+
+</html>

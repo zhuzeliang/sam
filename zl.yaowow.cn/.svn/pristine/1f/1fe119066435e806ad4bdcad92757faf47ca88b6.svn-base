@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>优惠码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/coupon-code.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="form" class="form">
+            <div class="zui-cell">
+                <div class="zui-cell-bd">
+                    <!-- 8位数字或字母 -->
+                    <input type="text" class="zui-input" placeholder="请输入8位数推荐码" required pattern="[A-Za-z0-9]{8}" emptyTips="请输入推荐码" maxlength="8" notMatchTips="推荐码至少8位" />
+                </div>
+                <div class="zui-cell-hd">
+                    <a href="###" class="zui-btn zui-btn-test" id="form-test">验证</a>
+                </div>
+            </div>
+        </div>
+        <div class="coupon-money">优惠金额：<em class="money"></em></div>
+        <div class="tips">
+            <p class="tips-title">温馨提示：</p>
+            <p>输入验证码后请点击验证，有效验证码方可使用仅能使用他人生成的推荐码推荐码仅能使用一次，在订单支付后生效。</p>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <a href="index.html" class="footer-tab">验证</a>
+        </div>
+    </footer>
+</body>
+<script>
+$(document).ready(function() {
+    $("#form-test").on("click", function(e) {
+        //表单提交
+        weui.form.validate('#form', function(error) {
+            if (!error) {
+                //表单提交用ajax
+                var loading = weui.loading('验证中...');
+                setTimeout(function() {
+                    loading.hide();
+                    weui.toast('验证成功', 1000);
+                    var money = "¥2000";
+                    $(".money").text(money);
+                }, 1500);
+            }
+        }, {
+            regexp: {
+                // IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+                // VCODE: /^.{4}$/
+            } // 可自定义正则
+        });
+    })
+    //失去焦点验证表单
+    weui.form.checkIfBlur('#form', {
+        // regexp: {
+        //     IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+        //     VCODE: /^.{4}$/
+        // }// 可自定义正则
+    });
+})
+</script>
+
+</html>
