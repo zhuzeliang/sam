@@ -1,0 +1,55 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+@import "swipeSlide";
+@import "dropload";
+@import "footer";
+@import "product";
+.container{
+	padding-bottom: 1.1rem;
+}
+.zui-nav-list {
+    @include flexbox;
+    background: #fff;
+    margin-bottom: 0.30rem;
+    .zui-nav {
+        @include flexbox;
+        @include flex(1);
+        @include vertical;
+        @include vertical-layout(center);
+        @include horizontal-layout(center);
+        width: 0;
+        padding: 0.25rem 0.10rem;
+        .zui-nav-img {
+            margin-bottom: 0.15rem;
+            img {
+                height: 0.62rem;
+                display: block;
+            }
+        }
+    }
+}
+
+.whole-recommend {
+    @include flexbox;
+    @include vertical-layout(center);
+    @include horizontal-layout(justify);
+    height: 0.90rem;
+    line-height: 0.90rem;
+    background: #fff;
+    padding: 0 0.30rem;
+    h2 {
+        font-weight: normal;
+        font-size: 0.34rem;
+    }
+    .city {
+    	display:block;
+        background: url(/static/images/icon/location.png) no-repeat left center;
+        background-size: 0.25rem auto;
+        padding-left: 0.30rem;
+        color: $main-color;
+    }
+}
