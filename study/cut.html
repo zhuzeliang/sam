@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+
+<body>
+    <p>点击复制后在右边textarea CTRL+V看一下</p>
+    <input type="text" id="inputText" value="测试文本999" style="color: red;" />
+    <input type="button" id="btn" value="复制" />
+    <textarea rows="4"></textarea>
+</body>
+<script>
+var btn = document.getElementById('btn');
+btn.addEventListener('click', function() {
+    var inputText = document.getElementById('inputText');
+    var currentFocus = document.activeElement;
+    inputText.focus();
+    inputText.setSelectionRange(0, inputText.value.length);
+    try {
+        var msg = document.execCommand('copy') ? '成功' : '失败'
+        alert('复制内容 ' + msg)
+    } catch (err) {
+        alert('不能使用这种方法复制内容')
+    }
+    // document.execCommand('copy', true);
+    currentFocus.focus();
+});
+</script>
+
+</html>
