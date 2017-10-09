@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+@import "swipeSlide";
+#slide1{
+	height: 2.50rem;
+}
+.goods-detail{
+	padding:0.30rem;
+	background:#fff;
+	color: $sub-font-color;
+	line-height:1.36;
+	text-align:justify;
+	.goods-main{
+		font-size:0.32rem;
+		@include flexbox;
+		@include horizontal-layout(justify);
+		.origin{
+			text-decoration: line-through;
+			font-size:0.26rem;
+		}
+		.goods-name{
+			color:$main-font-color;
+		}
+	}
+	.goods-sub{
+		margin:0.12rem 0;
+	}
+}
+
+.goods-text-list{
+	.tem{
+		display:inline-block;
+		margin-right:0.12rem;
+		.tem-icon{
+			vertical-align: middle;
+    		margin-top:-2px;
+    		margin-bottom:1px;
+    		width: 0.25rem;
+    		margin-right:0.05rem;
+		}
+	}
+}
+.goods-intro{
+	@include border-1px;
+	border-top-width: 1px;
+	font-size:0.32rem;
+	border-bottom-width:1px;
+	margin-top:0.30rem;
+}
+.container{
+	padding-bottom:1.0rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+}
+
+.footer {
+    @include flexbox;
+    .footer-tab {
+        display: block;
+        @include flex(1);
+        height: 1.0rem;
+        line-height: 1.0rem;
+        color: #fff;
+        font-size: 0.32rem;
+        background:$main-color;
+        text-align: center;
+    }
+}

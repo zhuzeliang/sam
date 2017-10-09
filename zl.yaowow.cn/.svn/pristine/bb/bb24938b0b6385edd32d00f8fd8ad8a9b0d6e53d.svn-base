@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/goods-detail.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/swipeSlide.min.js"></script><!-- 轮播图start -->
+</head>
+<body>
+   <!--  门店自提商品详情 -->
+    <div class="container">
+        <div class="slide" id="slide1">
+            <ul>
+                <li>
+                    <a href="###">
+                        <img src="/static/images/bg/store.png" alt="图片">
+                    </a>
+                </li>
+            </ul>
+            <!-- 有轮播图 -->
+            <!-- <ul>
+                <li>
+                    <a href="###">
+                        <img src="/static/images/bg/store.png" alt="图片">
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <img src="/static/images/test/b.png" alt="图片">
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <img src="/static/images/test/a.png" alt="图片">
+                    </a>
+                </li>
+            </ul>
+            <div class="dot">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div> -->
+        </div>
+        <!-- 轮播图 end-->
+        <div class="goods-detail">
+            <div class="goods-main">
+                <div class="goods-main-left">
+                    <span class="goods-name">拜耳铂金汽车贴膜</span>
+                    <span class="origin">¥2999.00</span>
+                </div>
+                <div class="goods-main-right zui-r">¥1999.00</div>
+            </div>
+            <div class="goods-sub">管家式服务，全程跟踪贴心到家，跳楼价</div>
+            <div class="goods-text-list">
+                <span class="tem sn"><img class="tem-icon" src="/static/images/icon/goods-04.png" />门店自提</span>
+            </div>
+        </div>
+        <div class="zui-row goods-intro">
+            <div class="zui-row-bd">商品介绍：</div>
+        </div>
+        <div class="editor">
+            商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <a href="../pay/success.html" class="footer-tab">立即购买</a>
+        </div>
+    </footer>
+</body>
+
+</html>

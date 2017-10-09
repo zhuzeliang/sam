@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品服务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/goods.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="goods-list">
+                <a href="goods-detail.html" class="goods">
+                    <div class="goods-img">
+                        <img src="/static/images/test/goods.png" alt="">
+                    </div>
+                    <div class="goods-text">
+                        <div class="goods-text-main">拜耳铂金汽车膜</div>
+                        <div class="goods-text-sub">管家式服务，全程跟踪贴心到家，跳楼价</div>
+                        <div class="goods-text-price zui-r">¥1999.00</div>
+                        <div class="goods-text-list">
+                            <span class="tem sn"><img class="tem-icon" src="/static/images/icon/goods-01.png" />十年质保</span>
+                            <span class="tem dd"><img class="tem-icon" src="/static/images/icon/goods-02.png" />到店服务</span>
+                            <span class="tem yh"><img class="tem-icon" src="/static/images/icon/goods-03.png" />优惠券</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="goods-detail2.html" class="goods">
+                    <div class="goods-img">
+                        <img src="/static/images/test/goods.png" alt="">
+                    </div>
+                    <div class="goods-text">
+                        <div class="goods-text-main">拜耳铂金汽车膜</div>
+                        <div class="goods-text-sub">管家式服务，全程跟踪贴心到家，跳楼价</div>
+                        <div class="goods-text-price zui-r">¥1999.00</div>
+                        <div class="goods-text-list">
+                            <span class="tem yh"><img class="tem-icon" src="/static/images/icon/goods-04.png" />到店自提</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="###" class="goods">
+                    <div class="goods-img">
+                        <img src="/static/images/test/goods.png" alt="">
+                    </div>
+                    <div class="goods-text">
+                        <div class="goods-text-main">拜耳铂金汽车膜</div>
+                        <div class="goods-text-sub">管家式服务，全程跟踪贴心到家，跳楼价</div>
+                        <div class="goods-text-price zui-r">¥1999.00</div>
+                        <div class="goods-text-list">
+                            <span class="tem yh"><img class="tem-icon" src="/static/images/icon/goods-04.png" />到店自提</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="###" class="goods">
+                    <div class="goods-img">
+                        <img src="/static/images/test/goods.png" alt="">
+                    </div>
+                    <div class="goods-text">
+                        <div class="goods-text-main">拜耳铂金汽车膜</div>
+                        <div class="goods-text-sub">管家式服务，全程跟踪贴心到家，跳楼价</div>
+                        <div class="goods-text-price zui-r">¥1999.00</div>
+                        <div class="goods-text-list">
+                            <span class="tem yh"><img class="tem-icon" src="/static/images/icon/goods-04.png" />到店自提</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

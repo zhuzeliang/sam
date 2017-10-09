@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import "reset";
+@import "mixins";
+@import "variable";
+@import "common";
+@import "button";
+@import "form";
+.cash{
+	border-top-width: 1px;
+	margin-top:0.30rem;
+}
+.account-money{
+	color:$sub-font-color;
+	padding:0.20rem 0.30rem;
+}
+.account-tip{
+	margin-top: 0.20rem;
+	padding:0.30rem;
+	text-align:justify;
+	color:$sub-font-color;
+}
+.container{
+	padding-bottom:1.0rem;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+}
+
+.footer {
+    @include flexbox;
+    .footer-tab {
+        display: block;
+        @include flex(1);
+        height: 1.0rem;
+        line-height: 1.0rem;
+        color: #fff;
+        font-size: 0.32rem;
+        background: #999999;
+        text-align: center;
+        &.active{
+        	background:$main-color;
+        }
+    }
+}

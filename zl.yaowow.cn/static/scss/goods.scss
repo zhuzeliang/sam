@@ -1,0 +1,56 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+.goods{
+	display:block;
+	@include flexbox;
+	@include border-1px;
+	border-bottom-width: 1px;
+    background: #fff;
+    padding: 0.30rem;
+    line-height:1.36;
+    .goods-img{
+    	img{
+    		display:block;
+    		width: 2.0rem;
+    		height: 1.5rem;
+    	}
+    }
+    .goods-text{
+    	@include flex(1);
+        @include flexbox;
+        @include vertical;
+        // @include horizontal-layout(center);
+        margin-left: 0.20rem;
+        color: $sub-font-color;
+        font-size:0.28rem;
+        .goods-text-main{
+        	@include clamp(1);
+        	font-size:0.30rem;
+        	color:$main-font-color;
+        }
+        .goods-text-sub{
+        	@include clamp(1);
+        }
+        .goods-text-price{
+        	margin-bottom:0.03rem;
+        	margin-top:0.03rem;
+        }
+        .goods-text-list{
+        	.tem{
+        		display:inline-block;
+        		margin-right:0.12rem;
+        		.tem-icon{
+        			vertical-align: middle;
+	        		margin-top:-2px;
+	        		margin-bottom:1px;
+	        		width: 0.25rem;
+	        		margin-right:0.05rem;
+        		}
+        	}
+        }
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>领红包</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/red-packet.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/layer.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="red-banner">
+            <img src="/static/images/bg/banner-red.png">
+        </div>
+        <div class="zui-tab-list">
+            <a href="###" class="zui-tab active">
+			<span>全国通用</span>
+		</a>
+            <a href="###" class="zui-tab">
+			<span>区域限定</span>
+		</a>
+        </div>
+        <div class="packet-list">
+            <a href="###" class="packet" onclick="layerFail();">
+                <div class="packet-left">
+                    <div class="packet-money">¥200</div>
+                    <div class="packet-limit">仅限汽车贴膜类服务使用</div>
+                </div>
+                <div class="packet-bd">
+                    <div class="packet-cell">可用城市：上海</div>
+                    <div class="packet-cell">可用金额：满101元可用</div>
+                    <div class="packet-cell">有效期至：2017.08.29</div>
+                </div>
+                <div class="packet-btn">
+                    <p>领</p>
+                    <p>取</p>
+                </div>
+            </a>
+            <a href="###" class="packet" onclick="layerSuccess();">
+                <div class="packet-left">
+                    <div class="packet-money">¥200</div>
+                    <div class="packet-limit">仅限汽车贴膜类服务使用</div>
+                </div>
+                <div class="packet-bd">
+                    <div class="packet-cell">可用城市：上海</div>
+                    <div class="packet-cell">可用金额：满101元可用</div>
+                    <div class="packet-cell">有效期至：2017.08.29</div>
+                </div>
+                <div class="packet-btn">
+                    <p>领</p>
+                    <p>取</p>
+                </div>
+            </a>
+            <a href="###" class="packet over">
+                <div class="packet-left">
+                    <div class="packet-money">¥200</div>
+                    <div class="packet-limit">仅限汽车贴膜类服务使用</div>
+                </div>
+                <div class="packet-bd">
+                    <div class="packet-cell">可用城市：上海</div>
+                    <div class="packet-cell">可用金额：满10100元可用</div>
+                    <div class="packet-cell">有效期至：2017.08.29</div>
+                </div>
+                <div class="packet-btn">
+                    <p>抢</p>
+                    <p>光</p>
+                    <p>了</p>
+                </div>
+            </a>
+        </div>
+        <div class="packet-list" style="display: none;">
+            <a href="###" class="packet" onclick="layerFail();">
+                <div class="packet-left">
+                    <div class="packet-money">¥200</div>
+                    <div class="packet-limit">仅限汽车贴膜类服务使用</div>
+                </div>
+                <div class="packet-bd">
+                    <div class="packet-cell">可用城市：上海</div>
+                    <div class="packet-cell">可用金额：满101元可用</div>
+                    <div class="packet-cell">有效期至：2017.08.29</div>
+                </div>
+                <div class="packet-btn">
+                    <p>领</p>
+                    <p>取</p>
+                </div>
+            </a>
+            <a href="###" class="packet" onclick="layerSuccess();">
+                <div class="packet-left">
+                    <div class="packet-money">¥200</div>
+                    <div class="packet-limit">仅限汽车贴膜类服务使用</div>
+                </div>
+                <div class="packet-bd">
+                    <div class="packet-cell">可用城市：上海</div>
+                    <div class="packet-cell">可用金额：满101元可用</div>
+                    <div class="packet-cell">有效期至：2017.08.29</div>
+                </div>
+                <div class="packet-btn">
+                    <p>领</p>
+                    <p>取</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+// 已经领过该优惠劵弹窗
+function layerFail() {
+    var html = '<div class="zui-layer">' +
+			        '<div class="zui-layer-text"><p>您已经领过该优惠劵了，</p>不要太贪心咯！</div>' +
+			        '<a href="###" class="zui-btn zui-btn-layer" onclick="layer.closeAll();">确定</a>' +
+		        '</div>'
+    layer.open({
+        content: html
+    });
+};
+// 优惠劵领取成功弹窗
+function layerSuccess() {
+    var html = '<div class="zui-layer">' +
+			        '<div class="zui-layer-text"><p>领取成功，</p>您可以到个人中心我的优惠劵查看</div>' +
+			        '<a href="###" class="zui-btn zui-btn-layer" onclick="layer.closeAll();">确定</a>' +
+		        '</div>'
+    layer.open({
+        content: html
+    });
+};
+//tab切换
+$(".zui-tab").on("click",function(){
+	var $index = $(this).index();
+	$(this).addClass('active').siblings('.zui-tab').removeClass('active');
+	$(".packet-list").eq($index).show().siblings('.packet-list').hide();
+})
+</script>
+
+</html>

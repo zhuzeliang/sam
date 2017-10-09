@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单信息</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/order-detail.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/layer.js"></script>
+</head>
+<style>
+    .container{
+        padding-bottom:1.0rem;
+    }
+</style>
+<body>
+      <!--   订单信息-自营 -->
+	<div class="container">
+		 <div class="order">
+            <div class="order-img">
+                <img src="/static/images/test/order.png" alt="">
+            </div>
+            <div class="order-text">
+                <div class="order-text-main">日式管家洗车服务</div>
+                <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                <div class="order-text-price zui-r">¥1999.0</div>
+            </div>
+        </div>
+        <div class="zui-row">
+            <div class="zui-row-icon">订单日期：</div>
+            <div class="zui-row-bd">2017-11-10 09:30</div>
+        </div>
+        <div class="zui-row">
+            <div class="zui-row-icon">商家信息：</div>
+            <div class="zui-row-bd">途虎养车徐家汇店</div>
+        </div>
+        <div class="zui-row">
+            <div class="zui-row-icon">订单编号：</div>
+            <div class="zui-row-bd">010010010110010100</div>
+        </div>
+        
+        <div class="zui-row" style="background: #f8f8f8;">
+            <div class="zui-row-icon">请选择支付方式</div>
+        </div>
+        <div class="zui-row">
+            <div class="zui-row-icon">
+                <img src="/static/images/icon/wx.png">
+            </div>
+            <div class="zui-row-bd">微信支付(推荐)</div>
+            <div class="zui-row-hd">
+                <label for="zui1" class="zui-checkbox-box">
+                    <input type="radio" name="pay" class="zui-checkbox" checked id="zui1" />
+                    <span class="zui-checkbox-tip"></span>
+                </label>
+            </div>
+        </div>
+        <div class="zui-row">
+            <div class="zui-row-icon">
+                <img src="/static/images/icon/zfb.png">
+            </div>
+            <div class="zui-row-bd">支付宝支付</div>
+            <div class="zui-row-hd">
+                <label for="zui2" class="zui-checkbox-box">
+                    <input type="radio" name="pay" class="zui-checkbox"  id="zui2" />
+                    <span class="zui-checkbox-tip"></span>
+                </label>
+            </div>
+        </div>
+        <div class="account-box">
+            <div class="account-bd">结算信息：</div>
+            <div class="account">
+                <p class="account-cell"><label>订单金额：</label><span>¥1999</span></p>
+                <p class="account-cell"><label>实付价格：</label><span>¥1699</span></p>
+            </div>
+        </div>
+	</div>
+    <footer>
+        <div class="footer">
+            <a href="###" class="footer-tab">确认</a>
+        </div>
+    </footer>
+</body>
+<script>
+    // select效果
+    $(".zui-select").on("change",function(){
+        var text = $(this).find("option:selected").text();
+        $(this).parents(".zui-cell-bd-select").find(".zui-input").val(text);
+    });
+
+
+   
+</script>
+</html>

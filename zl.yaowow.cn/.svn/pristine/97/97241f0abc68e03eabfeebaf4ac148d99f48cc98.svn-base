@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付成功</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/pay.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+<body>
+	<div class="container">
+        <div class="pay-tip">
+            <div class="tip-img">
+                <img src="/static/images/icon/pay-success.png" alt="成功">
+            </div>
+            <div class="tip-text">支付成功，您可至我的订单查看订单详细信息</div>
+            <div class="tip-link">
+                <a href="../index/index.html" class="zui-b">返回首页</a>
+                <a href="../order/my-order.html" class="zui-b">我的订单</a>
+            </div>
+        </div>
+	</div>
+</body>
+</html>

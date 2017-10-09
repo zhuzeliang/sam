@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+.zui-rows{
+	margin-top: 0;
+}
+.zui-row{
+	&:first-child{
+		border-top-width:0;
+	}
+}
+.car-hd{
+	width: 0.70rem;
+	height: 0.70rem;
+	border-radius: 50%;
+	background:#abdaf7 url(/static/images/bg/car-s.png) no-repeat center center;
+	background-size:0.59rem auto;
+}
+.add-box{
+	@include border-1px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	text-align: right;
+	.add{
+		display: inline-block;
+		color:$main-color;
+		padding:0.20rem 0.35rem;
+		font-size:0.32rem;
+	}
+}

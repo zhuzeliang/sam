@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择车辆</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/car-choose.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="choose-box">
+			<div>请选择服务的车辆</div>
+			<a href="/templte/car/car-info.html" class="add">+新增</a>
+		</div>
+		<!-- <div class="no-data">暂无车辆信息</div> -->
+		<div class="zui-rows">
+			<a href="###" class="zui-row choose">
+				<div class="zui-row-icon">
+					<div class="car-hd">
+						<span>浙A123456</span>
+					</div>
+				</div>
+				<div class="zui-row-bd">奔驰S350</div>
+			</a>
+			<a href="###" class="zui-row">
+				<div class="zui-row-icon">
+					<div class="car-hd">
+						<span>浙A123456</span>
+					</div>
+				</div>
+				<div class="zui-row-bd">奔驰S350</div>
+			</a>
+		</div>
+	</div>
+	<footer>
+        <div class="footer">
+            <a href="###" class="footer-tab active" onclick="window.history.go(-1)">保存</a>
+        </div>
+    </footer>
+</body>
+<script>
+	$(".zui-row").on("click",function(){
+		$(this).addClass('choose').siblings('.zui-row').removeClass('choose');
+	})
+</script>
+</html>

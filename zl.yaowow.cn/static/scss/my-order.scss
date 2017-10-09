@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+@import "order";
+.container{
+    padding-top: 1.0rem;
+}
+.zui-tab-list{
+    @include flexbox;
+    @include border-1px;
+    border-bottom-width:1px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background:#fff;
+    z-index:10;
+    .zui-tab{
+        display:block;
+        @include flex(1);
+        @include flexbox;
+        @include vertical-layout(center);
+        @include horizontal-layout(center);
+        height: 1.0rem;
+        width: 0;
+        font-size: 0.32rem;
+        &.active{
+            color:$main-color;
+            span{
+                border-bottom: 2px solid $main-color;
+                height: 0.50rem;
+                line-height:0.50rem;
+                display:inline-block;
+            }
+        }
+    }
+}
+.order-box{
+    @include border-1px;
+    border-bottom-width:1px;
+    border-top-width:1px;
+    background:#fff;
+    padding-bottom:0.30rem;
+    margin-bottom:0.30rem;
+}
+
+.order-bottom{
+    @include flexbox;
+    @include horizontal-layout(justify);
+    padding:0 0.30rem;
+}
+.btn-box{
+    @include flexbox;
+}
+.order-state{
+    padding-left:0.36rem;
+    color:#e60012;
+    &.yfk{
+        background:url(/static/images/icon/state-01.png) no-repeat left center;
+        background-size:0.28rem auto;
+    }
+    &.dth{
+        background:url(/static/images/icon/state-02.png) no-repeat left center;
+        background-size:0.28rem auto;
+    }
+    &.ywc{
+        background:url(/static/images/icon/state-03.png) no-repeat left center;
+        background-size:0.28rem auto;
+    }
+}

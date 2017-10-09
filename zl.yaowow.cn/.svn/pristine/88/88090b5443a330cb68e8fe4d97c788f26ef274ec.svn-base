@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+.pay-tip{
+	text-align: center;
+	.tip-img{
+		margin-top:1.0rem;
+		margin-bottom:0.60rem;
+	}
+	.tip-link{
+		margin-top:0.30rem;
+		a{
+			display:inline-block;
+			padding:0 0.50rem;
+		}
+	}
+}

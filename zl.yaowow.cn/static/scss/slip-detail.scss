@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+.record-title{
+	color: $sub-font-color;
+	margin-top:0.30rem;
+	text-align:center;
+	margin-bottom:0.10rem;
+}
+.record{
+	@include border-1px;
+	border-width: 1px;
+	margin-bottom:0.30rem;
+	margin-left: 0.30rem;
+	margin-right: 0.30rem;
+	padding:0.20rem 0.30rem;
+	background: #fff;
+	line-height: 1.36;
+	.record-cell{
+		margin-top:0.15rem;
+		&:first-child{
+			margin-top:0;
+		}
+	}
+}

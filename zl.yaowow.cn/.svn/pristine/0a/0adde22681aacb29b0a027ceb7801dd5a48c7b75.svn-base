@@ -1,0 +1,112 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+@import "order";
+@import "form";
+// .zui-row{
+// 	.zui-row-icon{
+// 		margin-right:0;
+// 	}
+// }
+.order{
+	@include border-1px;
+	border-bottom-width:1px;
+	.order-text{
+		background:#fff;
+	}
+}
+.account-box{
+	@include border-1px;
+	border-bottom-width:1px;
+	@include flexbox;
+	padding:0.30rem 0.35rem;
+	font-size:0.32rem;
+	background:#fff;
+	.account{
+		@include flex(1);
+		.account-cell{
+			@include flexbox;
+			margin-bottom:0.10rem;
+			label{
+				display:block;
+				@include flex(1);
+				text-align:right;
+			}
+			span{
+				display:block;
+				min-width: 1.2rem;
+				text-align:right;
+			}
+		}
+	}
+}
+.zui-checkbox-box{
+	.zui-checkbox:checked+.zui-checkbox-tip {
+		background:$main-color;
+		border:1px solid $main-color;
+        &::after {
+            position: absolute;
+            content: "\200B";
+            display: block;
+            width: 8px;
+            height: 4px;
+            left: 50%;
+            top: 50%;
+            margin-left: -4px;
+            margin-top: -4px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            transform: rotateZ(-45deg);
+        }
+    }
+}
+
+.see{
+	display:inline-block;
+	margin-left:0.10rem;
+	width: 0.32rem;
+	vertical-align:middle;
+	margin-top:-2px;
+	margin-bottom:1px;
+}
+
+.tip{
+	display:inline-block;
+	width: 0.36rem;
+	height: 0.36rem;
+	background:#82c0e7;
+	color:#fff;
+	border-radius: 50%;
+	text-align:center;
+	line-height:0.36rem;
+	font-style: normal;
+	font-size:0.26rem;
+	vertical-align:middle;
+	margin-top:-2px;
+	margin-bottom:1px;
+	margin-left:0.10rem;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+}
+.footer {
+    @include flexbox;
+    .footer-tab {
+        display: block;
+        @include flex(1);
+        height: 1.0rem;
+        line-height: 1.0rem;
+        color: #fff;
+        font-size: 0.32rem;
+        background: $main-color;
+        text-align: center;
+    }
+}

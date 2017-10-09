@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@import "variable";
+@import "mixins";
+@import "reset";
+@import "common";
+@import "button";
+.zui-rows{
+	margin-top: 0;
+}
+.zui-row{
+	&:first-child{
+		border-top-width:0;
+	}
+	&.choose::after{
+		content:"\200B";
+		display:block;
+		width: 0.35rem;
+		height: 0.29rem;
+		background:url(/static/images/icon/right.png) no-repeat center center;
+		background-size:0.35rem 0.29rem;
+	}
+}
+.choose-box{
+	@include flexbox;
+	@include horizontal-layout(justify);
+	@include border-1px;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	padding:0.20rem 0.35rem;
+	font-size:0.32rem;
+	.add{
+		display: inline-block;
+		color:$main-color;
+		font-size:0.32rem;
+	}
+}
+.car-hd{
+	border:1px solid $main-color;
+	padding:2px;
+	border-radius: 4px;
+	span{
+		display:inline-block;
+		background:$main-color;
+		border-radius: 4px;
+		color:#fff;
+		width: 1.85rem;
+		text-align:center;
+		line-height: 1.6;
+	}
+}
+
+.container{
+	padding-bottom:1.0rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
+}
+
+.footer {
+    @include flexbox;
+    .footer-tab {
+        display: block;
+        @include flex(1);
+        height: 1.0rem;
+        line-height: 1.0rem;
+        color: #fff;
+        font-size: 0.32rem;
+        background: #999999;
+        text-align: center;
+        &.active{
+        	background:$main-color;
+        }
+    }
+}

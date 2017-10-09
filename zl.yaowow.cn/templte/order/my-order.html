@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的订单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/my-order.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+    <script src="/static/js/layer.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="zui-tab-list">
+            <a href="###" class="zui-tab active">
+                <span>全部</span>
+            </a>
+            <a href="###" class="zui-tab">
+                <span>已支付</span>
+            </a>
+            <a href="###" class="zui-tab">
+                <span>已提货</span>
+            </a>
+            <a href="###" class="zui-tab">
+                <span>已完成</span>
+            </a>
+        </div>
+        <div class="content">
+            <div class="order-list">
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state yfk">已付款</p>
+                        <div class="btn-box">
+                            <a href="order-detail1.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state yfk">已付款</p>
+                        <div class="btn-box">
+                            <a href="order-detail2.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state dth">待提货</p>
+                        <div class="btn-box">
+                            <a href="###" class="zui-btn zui-btn-th" onclick="layerTh();">确认提货</a>
+                            <a href="order-detail4.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state ywc">已完成</p>
+                        <div class="btn-box">
+                            <a href="order-detail3.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state ywc">已完成</p>
+                        <div class="btn-box">
+                            <a href="order-detail3.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state ywc">已完成</p>
+                        <div class="btn-box">
+                            <a href="order-detail3.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-box">
+                    <div class="order">
+                        <div class="order-img">
+                            <img src="/static/images/test/order.png" alt="">
+                        </div>
+                        <div class="order-text">
+                            <div class="order-text-main">日式管家洗车服务</div>
+                            <div class="order-text-sub">管家式服务，全程跟踪，，贴心到家，跳楼价！</div>
+                            <div class="order-text-price"><em>¥1999.0</em></div>
+                        </div>
+                    </div>
+                    <div class="order-bottom">
+                        <p class="order-state ywc">已完成</p>
+                        <div class="btn-box">
+                            <a href="order-detail3.html" class="zui-btn zui-btn-see">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+<script>
+// 确认提货弹窗
+function layerTh() {
+    var html = '<div class="zui-layer">' +
+                    '<div class="zui-layer-text"><p>请您至门店享受服务或获取商品后再进行提货操作，</p>是否继续提货？</div>' +
+                    '<div class="layer-btn-box">'+
+                        '<a href="###" class="zui-btn zui-btn-layer-yes" onclick="alert(000);">确定</a>' +
+                        '<a href="###" class="zui-btn zui-btn-layer-no" onclick="layer.closeAll();">取消</a>' +
+                    '</div>'+
+                '</div>'
+    layer.open({
+        content: html
+    });
+};
+</script>
+</html>

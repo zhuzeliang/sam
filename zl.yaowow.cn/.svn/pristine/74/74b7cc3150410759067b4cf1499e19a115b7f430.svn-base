@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的车辆</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/css/weui.min.css">
+    <link rel="stylesheet" href="/static/css/car-info.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/weui.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="tips">温馨提示：*为必填项，请您填写真实有效信息。</div>
+		<div class="zui-form" id="form">
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>车主姓名：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input must" autocomplete="off" required  emptyTips="请输入车主姓名" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>手机号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="tel" class="zui-input must" autocomplete="off" required pattern="[0-9]{11}" maxlength="11" emptyTips="请输入手机号" notMatchTips="请输入正确的手机号" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>车牌号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input must" autocomplete="off" required pattern="^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$" maxlength="7" emptyTips="请输入车牌号" notMatchTips="请输入正确的车牌号" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>车辆型号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input must" autocomplete="off" required emptyTips="请输入车辆型号" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>行驶证号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input must" autocomplete="off"  required emptyTips="请输入行驶证号"/>
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i>*</i>车牌保险单号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input must" autocomplete="off" required emptyTips="请输入车牌保险单号"/>
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i></i>驾驶证号：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input" autocomplete="off" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i></i>电子邮箱：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input" autocomplete="off" />
+				</div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i></i>所在城市：
+				</div>
+				<div class="zui-cell-bd zui-cell-bd-select">
+					<input type="text" class="zui-input" autocomplete="off" readonly />
+					<div class="zui-cell-select">
+						<select name="" id="" class="zui-select">
+							<option value="1">上海</option>
+							<option value="2">北京</option>
+							<option value="1">合肥</option>
+							<option value="1">杭州</option>
+						</select>
+					</div>
+				</div>
+				<div class="zui-icon-right"></div>
+			</div>
+			<div class="zui-cell">
+				<div class="zui-cell-hd">
+					<i></i>邮编：
+				</div>
+				<div class="zui-cell-bd">
+					<input type="text" class="zui-input" autocomplete="off" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+        <div class="footer">
+            <a href="###" class="footer-tab" id="form-sub" onclick="window.history.go(-1)">保存</a>
+        </div>
+    </footer>
+</body>
+<script>
+	// select效果
+	$(".zui-select").on("change",function(){
+		var text = $(this).find("option:selected").text();
+		$(this).parents(".zui-cell-bd-select").find(".zui-input").val(text);
+	});
+
+
+	 $("#form-sub").on("click", function(e) {
+        //表单提交
+        weui.form.validate('#form', function(error) {
+            if (!error) {
+                //表单提交用ajax
+                var loading = weui.loading('提交中...');
+                setTimeout(function() {
+                    loading.hide();
+                    weui.toast('提交成功', 3000);
+                }, 1500);
+            }
+        });
+    })
+    //失去焦点验证表单
+    weui.form.checkIfBlur('#form', {});
+
+    $(".must").on("blur",function(){
+    	 weui.form.validate('#form', function(error) {
+            if (!error) {
+                $(".footer-tab").addClass('active');
+            }else{
+            	$(".footer-tab").removeClass('active');
+            }
+            return true;
+        });
+    })
+
+</script>
+</html>
