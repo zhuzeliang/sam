@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <link rel="stylesheet" href="../static/css/base.css?v=1.2">
+    <script src="../static/js/config.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/layer.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <title>首页</title>
+</head>
+<style>
+.layer-award-text{
+    background: url(../static/images/layer-bg3.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+/* 新增css */
+.wx-mod {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 960;
+    display: none;
+}
+.wx-mod .wx-share img {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+}
+.wx-mod .wx-share p {
+    color: #fff;
+    font-size: 17px;
+    text-align: center;
+    margin-top: 140px;
+    line-height: 30px;
+}
+/* 新增css */
+</style>
+<body>
+    <div class="container">
+        <div class="award-box">
+            <div class="award" style="display: none;">特</div>
+        </div>
+        <div class="lg-logo">
+            <div class="lg-logo-inner">
+                <div class="lg-logo-img">
+                    <img src="../static/images/logo.png" alt="LG">
+                </div>
+                <p>点击集字</p>
+            </div>
+        </div>
+        <div class="chance">您当前有&nbsp;<span class="chance-num">1</span>&nbsp;次点击机会</div>
+        <div class="word-list clearfix">
+            <!-- 数量不为0可以赠送加class="active" -->
+            <div class="word-box">
+                <div class="word">
+                    <p class="word-num">0</p>
+                    <p class="word-text">L</p>
+                </div>
+                <p class="send">赠送</p>
+            </div>
+            <div class="word-box">
+                <div class="word">
+                    <p class="word-num">0</p>
+                    <p class="word-text">&</p>
+                </div>
+                <p class="send">赠送</p>
+            </div>
+            <div class="word-box">
+                <div class="word">
+                    <p class="word-num">0</p>
+                    <p class="word-text">D</p>
+                </div>
+                <p class="send">赠送</p>
+            </div>
+            <div class="word-box">
+                <div class="word">
+                    <p class="word-num">0</p>
+                    <p class="word-text">陶</p>
+                </div>
+                <p class="send">赠送</p>
+            </div>
+            <div class="word-box">
+                <div class="word">
+                    <p class="word-num">0</p>
+                    <p class="word-text">瓷</p>
+                </div>
+                <p class="send">赠送</p>
+            </div>
+        </div>
+        <a href="###" class="ld-btn">点击兑换</a>
+        <p class="ld-tips">集齐五字，在每晚8:00-8:30点击兑换</p>
+    </div>
+    <!--  新增html  图片在images-->
+    <div class="wx-mod"><div class="wx-share"><img src="../static/images/wx_share.png" width="111" height="125"><p class="txt">点[发送给朋友]或[分享到朋友圈]<br>分享给你的好友</p></div></div>
+    <!--  新增html -->
+</body>
+<script>
+$(document).ready(function(){
+    updateWord();
+    var wordArr = ["L","&","D","陶","瓷"];
+    var awardArr = ["特等奖","一等奖","二等奖","三等奖"];
+    var chanceNum = 5;//集字机会次数
+    $(".chance-num").text(chanceNum);
+    //页面初始化集字数量是否为0和空效果
+    function updateWord(){
+        if($(".word-num").each(function(i,item){
+            if($.trim($(item).text()) == "0" || $.trim($(item).text()) == ""){
+                $(this).css({"opacity":"0"});
+                $(".word-box").eq(i).removeClass('active');
+            }else{
+                $(this).css({"opacity":"1"});
+                $(".word-box").eq(i).addClass('active');
+            }
+        }));
+    }
+
+    //点击集字
+    $(".lg-logo").on("click", function() {
+        $(".zui-loading").show();//loading加载效果
+        //判断是否有集字机会
+        if(chanceNum == 0){
+            $(".zui-loading").hide();
+            layer.open({
+                content: '呜呜~您当前没有集字机会了',
+                btn: '我知道了'
+            });
+        }else{
+             //ajax请求后台生成字 定时器模拟效果
+            setTimeout(function(){
+                $(".zui-loading").hide();
+                var randomNum = Math.floor(Math.random()*5);//随机生成数字0-4 此处应为后台生成返回前端
+                wordFun(wordArr[randomNum]);
+                chanceNum--;
+                $(".chance-num").text(chanceNum);
+                var wordNum = $(".word-num").eq(randomNum).text();
+                wordNum++;
+                console.log(wordNum)
+                $(".word-num").eq(randomNum).text(wordNum);
+                updateWord();
+            },600)
+        }
+    });
+    //集字弹窗方法
+    function wordFun(word){
+         var html = '<div class="layer-word">' +
+                        '<p class="layer-word-text">'+word+'</p>' +
+                    '</div>' +
+                    '<p class="layer-tips">恭喜你获得&nbsp;“'+word+'”&nbsp;字</p>' +
+                    '<div class="close" onclick="layer.closeAll();"></div>'
+        layer.open({
+            type: 1,
+            shadeClose:false,
+            content: html,
+            style: 'background: #ffe4c0 url(../static/images/layer-bg.png) no-repeat center center;background-size: 100% 100%;position: absolute;top: 1.0rem;width: 64%;height: 4.5rem;left: 50%;margin-left: -32%;border-radius: 0.20rem;-webkit-box-shadow: 0px 0px 0.10rem #b94326;box-shadow: 0px 0px 0.10rem #b94326;'
+        });
+    };
+
+    //赠送好友弹窗方法
+    function sendFun(word){
+         var html = '<p class="layer-send-text">'+word+'</p>' +
+                    '<p class="layer-send-tips">赠送一枚&nbsp;“'+word+'”&nbsp;给好友</p>' +
+                    '<a href="###" class="choose" onclick="share()">选择好友</a>'+
+                    '<div class="close" onclick="layer.closeAll();"></div>'
+        layer.open({
+            type: 1,
+            shadeClose:false,
+            content: html,
+            style: 'background: rgba(255,255,255,0) url(../static/images/layer-bg2.png) no-repeat center center;background-size: 100% 100%;position: absolute;top: 1.0rem;width: 64%;height: 4.5rem;left: 50%;margin-left: -32%;border-radius: 0.20rem;'
+        });
+    };
+    //点击赠送
+    $(".container").on("click",".active .send",function(){
+        var $index = $(".send").index($(this));
+        sendFun(wordArr[$index])
+    });
+
+    //兑换弹窗方法
+    function exchangeFun(word){
+         var html = '<p class="layer-award-text">'+word+'</p>' +
+                    '<p class="layer-award-tips">恭喜您获得'+word+'</p>' +
+                    '<div class="close" onclick="layer.closeAll();"></div>'
+        layer.open({
+            type: 1,
+            shadeClose:false,
+            content: html,
+            style: 'background: -webkit-linear-gradient(left top, #ff8042, #ff5842);position: absolute;top: 1.0rem;width: 64%;height: 4.5rem;left: 50%;margin-left: -32%;border-radius: 0.20rem;'
+        });
+    };
+
+    $(".ld-btn").on("click",function(){
+        //此处做判断是否集齐字
+        $(".zui-loading").show();
+        //ajax请求数据
+        setTimeout(function(){
+            $(".zui-loading").hide();
+            $(".award").show();
+            exchangeFun("特等奖")
+        },600)
+    });
+
+});
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx653b6205a201e1d7', // 必填，企业号的唯一标识，此处填写企业号corpid
+    timestamp: '1508835866', // 必填，生成签名的时间戳
+    nonceStr: 'tnvya58lhlp', // 必填，生成签名的随机串
+    signature: '0da26c6f547fcc9ff19f7531e540a648e1461bc0', // 必填，签名，见附录1
+    jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+    ]
+});
+wx.ready(function() {
+    //分享给朋友
+    window.share = function(){
+        // 新增js 
+        layer.closeAll();
+        $(".wx-mod").show();
+        // 新增js
+        // 分享给朋友
+        wx.onMenuShareAppMessage({
+            title: '互联网之子',
+            desc: '在长大的过程中，我才慢慢发现，我身边的所有事，别人跟我说的所有事，那些所谓本来如此，注定如此的事，它们其实没有非得如此，事情是可以改变的。更重要的是，有些事既然错了，那就该做出改变。',
+            link: 'http://movie.douban.com/subject/25785114/',
+            imgUrl: '../static/images/share-logo.jpg',
+            trigger: function(res) {
+                alert('用户点击发送给朋友');
+            },
+            success: function(res) {
+                alert('已分享');
+            },
+            cancel: function(res) {
+                alert('已取消');
+            },
+            fail: function(res) {
+                alert(JSON.stringify(res));
+            }
+        });
+        // 新增js 
+        // 分享给朋友圈
+        wx.onMenuShareTimeline({
+            title: '互联网之子',
+            link: 'http://movie.douban.com/subject/25785114/',
+            imgUrl: 'http://img3.douban.com/view/movie_poster_cover/spst/public/p2166127561.jpg',
+            trigger: function(res) {
+                alert('用户点击分享到朋友圈');
+            },
+            success: function(res) {
+                alert('已分享');
+            },
+            cancel: function(res) {
+                alert('已取消');
+            },
+            fail: function(res) {
+                alert(JSON.stringify(res));
+            }
+        });
+        // 新增js 
+    }
+});
+
+// 新增js
+$(".wx-mod").on("click",function(){
+    $(this).hide();
+});
+// 新增js
+</script>
+
+</html>

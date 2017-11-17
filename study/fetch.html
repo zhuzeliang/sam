@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fetch</title>
+</head>
+
+<body>
+</body>
+<script>
+var URL = 'js/data.json';
+
+async function fetchDemo() {
+    // fetch(URL).then(function(response) {
+    //     console.log(response.status)
+    //     return response.json();
+    // }).then(function(json) {
+    //     console.log(json)
+    // });
+    try {
+        let response = await fetch(URL);
+        console.log(response)
+        let data = await response.json();
+        console.log(data);
+    } catch (e) {
+        console.log("Oops, error", e);
+    }
+}
+
+fetchDemo();
+
+function xhrDemo() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', URL);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
+            var data = JSON.parse(xhr.responseText);
+            console.log(data.lists[0])
+        }
+    };
+    xhr.send();
+}
+xhrDemo()
+</script>
+
+</html>

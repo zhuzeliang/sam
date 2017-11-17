@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "reset";
+@import "mixins";
+@import "variable";
+@import "common";
+@import "button";
+h1.title{
+	font-weight: normal;
+	text-align: center;
+	font-size: 0.30rem;
+	line-height: 1.36;
+	padding:0.20rem 0.30rem;
+}
+h2.sub-title{
+	@include border-1px;
+	border-bottom-width: 1px;
+	font-weight: normal;
+	font-size: 0.36rem;
+	text-align: center;
+	line-height: 1.36;
+	padding:0.20rem 0.30rem;
+}
+.recommend{
+	margin-left: 0.30rem;
+	margin-right: 0.30rem;
+	margin-bottom: 0.30rem;
+	background: #fff;
+	.recommend-detail{
+		padding:0.20rem 0.30rem;
+		line-height:1.36;
+		.recommend-cell{
+			margin-top:0.12rem;
+			.fx{
+				margin-left:0.30rem;
+			}
+			&:first-child{
+				margin-top:0;
+			}
+		}
+	}
+}

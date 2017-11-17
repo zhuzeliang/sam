@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js内存泄露</title>
+    <script src="../../static/js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="nodes">00</div>
+    <button onclick="grow()">开始</button>
+</body>
+<script>
+function GetXmlHttpObject() {　　
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {　　　　
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");　　
+    }　　
+    return xmlhttp;
+}
+var xmlHttp = GetXmlHttpObject();　　
+function getLabelsGet() {　　
+    var url = "city.html"+ "?" + Math.random();　　
+    xmlHttp.open("GET", url, true);　　
+    xmlHttp.onreadystatechange = getOkGet　　
+    xmlHttp.send();
+}
+
+function getOkGet() {　　
+    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {　　　　
+        // var d = xmlHttp.responseText;
+        console.log(1)　　
+    }
+}
+// var timer = setInterval(getLabelsGet, 500);
+function loadData() {
+    $.ajax({
+        url: 'city.html',
+        type: 'GET',
+        // dataType: 'json',
+        // data: {
+        //     ak: 'yEFGek5V1C4CFFMUTvzuVD5h7AiVGKbk',
+        //     query: "大厦",
+        //     region: "深圳",
+        //     city_limit: true,
+        //     output: 'json'
+        // },
+        success: function(data) {
+            console.log(22)
+        },
+        error: function() {
+            alert('定位失败');
+        },
+        complete: function(xhr) {
+            // console.log(xhr)
+            // xhr=null;
+            // console.log(this)
+        }
+    })
+};
+var timer = setInterval(loadData, 500);
+
+</script>
+
+</html>

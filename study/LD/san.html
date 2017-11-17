@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局&&双飞翼布局</title>
+</head>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	word-break: break-all;
+	
+}
+.container{
+	overflow: hidden;
+	margin: 50px auto;
+/*	padding: 0 30px;
+	box-sizing: border-box;
+	background: greenyellow;*/
+}
+	.left{
+		float: left;
+		background: red;
+		width: 300px;
+		min-height: 200px;
+		margin-left:-100%;
+		/*position: relative;
+		left: -300px;*/
+	}
+	.right{
+		float: left;
+		width: 300px;
+		min-height: 200px;
+		background: blue;
+		margin-left: -300px;
+/*		position: relative;
+		left: -300px;*/
+	}
+	.main{
+		background: yellow;
+		min-height: 200px;
+		width: 100%;
+		float: left;
+		padding-left: 300px;
+		padding-right: 300px;
+		box-sizing: border-box;
+	}
+</style>
+<body>
+	<div class="container">
+		<div class="main">
+			<div class="inner">
+				中间自适应宽度中间自适应宽度中间自适应宽度中间自适应宽度中间自适应宽度中间自适应宽度中间自适应宽度aaaaaaaaaaaaaaaaaaaaaaaaa
+			</div>
+		</div>
+		<div class="left">
+			left
+		</div>
+		<div class="right">
+			right
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/layer.js"></script>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.z-table {
+    padding: 20px;
+    display: none;
+}
+
+table {
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+</style>
+
+<body>
+    <button>点我啊</button>
+    <div class="z-table">
+        <!-- <table>
+            <tr>
+                <td>姓名</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">请选择</option>
+                        <option value="1">姓名</option>
+                        <option value="2">部门</option>
+                        <option value="3">生日</option>
+                        <option value="4">编号</option>
+                        <option value="5">薪资</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>部门</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">请选择</option>
+                        <option value="1">姓名</option>
+                        <option value="2">部门</option>
+                        <option value="3">生日</option>
+                        <option value="4">编号</option>
+                        <option value="5">薪资</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>编号</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">请选择</option>
+                        <option value="1">姓名</option>
+                        <option value="2">部门</option>
+                        <option value="3">生日</option>
+                        <option value="4">编号</option>
+                        <option value="5">薪资</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>生日</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">请选择</option>
+                        <option value="1">姓名</option>
+                        <option value="2">部门</option>
+                        <option value="3">生日</option>
+                        <option value="4">编号</option>
+                        <option value="5">薪资</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>薪资</td>
+                <td>
+                    <select name="" id="">
+                        <option value="">请选择</option>
+                        <option value="1">姓名</option>
+                        <option value="2">部门</option>
+                        <option value="3">生日</option>
+                        <option value="4">编号</option>
+                        <option value="5">薪资</option>
+                    </select>
+                </td>
+            </tr>
+        </table> -->
+    </div>
+</body>
+<script>
+var jsonData = { "head": ["姓名", "部门", "编号", "生日", "薪资"], "list": { "姓名": 1, "生日": 3, "编号": 4, "薪资": 5, "部门": 2 }, "path": "d:/test/excel/201711081343029.xlsx" }
+var html = "";
+
+
+var jsonLeft = jsonData.head;
+var jsonRight = jsonData.list;
+
+//生成option
+function optionFun(m) {
+    var optionListHtml = '<select class="hah"><option value="">请选择</option>';
+    $.each(jsonRight, function(item, value) {
+        var options = '';
+        if (item == m) {
+            options += '<option value="' + value + '"selected>' + item + '</option>';
+        } else {
+            options += '<option value="' + value + '">' + item + '</option>';
+        }
+        optionListHtml += options;
+    })
+    optionListHtml += '</select>';
+    return optionListHtml;
+}
+//生成table
+function tableFun() {
+    var tableHtml = '<table>';
+    $.each(jsonLeft, function(i, value) {
+        var trs = "";
+        trs += '<tr><td>' + value + '</td><td>' + optionFun(value) + '</td></tr>';
+        tableHtml += trs;
+    });
+    tableHtml += '</table>';
+    return tableHtml;
+}
+
+//生成弹窗
+function layerFun() {
+    var html = tableFun();
+    $(".z-table").append(html);
+    console.log(html)
+    layer.open({
+        title: "信息",
+        type: 1,
+        area: ['560px', '450px'],
+        content: $(".z-table"),
+        btn: ['保存', '取消'],
+        yes: function(index, layero) {
+            console.log(index)
+            console.log(layero)
+            //ajax提交
+            // alert(1);
+            var valArrs = [];
+            $.each($("select"), function(i, dom) {
+                valArrs.push($(dom).find("option:selected").val())
+            })
+            console.log(valArrs);
+        },
+        btn2: function() {
+            $(".z-table").empty();
+        }
+    });
+
+}
+$("button").on("click", function() {
+    fun1()
+})
+
+function fun1() {
+    layer.alert('你确定你很帅么？', {
+        btn: ['确定'],
+        yes: function(index) {
+            layer.close(index);
+        }
+    });
+}
+</script>
+
+</html>

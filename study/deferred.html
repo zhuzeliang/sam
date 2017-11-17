@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>deferred</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+	<h1>000</h1>
+</body>
+<script>
+// $.ajax("cut.html")
+//     .done(function(data) { alert("哈哈，成功了！"); })
+//     .fail(function() { alert("出错啦！"); })
+//     .done(function() { alert("第二个回调函数！"); });
+
+
+
+ //    $.when($.ajax("cut.html"), $.ajax("index.html"))
+	// 　　.done(function(){ alert("哈哈，成功了！"); })
+	// 　　.fail(function(){ alert("出错啦！"); });
+var dtd = $.Deferred(); // 新建一个Deferred对象
+var wait = function(dtd){
+　　var tasks = function(){
+　　　　　　alert("执行完毕！");
+　　　　　　dtd.resolve(); // 改变Deferred对象的执行状态
+　　　　};
+　　　　setTimeout(tasks,5000);
+　　　　return dtd;
+　　};
+$.when(wait(dtd))
+　　.done(function(){ alert("哈哈，成功了！"); })
+　　.fail(function(){ alert("出错啦！"); });
+	</script>
+
+</html>

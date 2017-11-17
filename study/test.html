@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+
+</head>
+<body>
+<div style="" align="center">
+ 
+<small>jkyun_test</small>
+<input style="width:20px" id="num" value="1">
+<small>_rds0</small><input style="width:20px" id="source" value="1"><small style="color: red">切库选择为(第一个文本框)：【1-50】；数据源选择为(第二个文本框)：【1-3】</small>
+    
+    <button id="query" onclick="get()">查询</button>
+    <button id="query" onclick="add()">新增</button>
+    <button id="query" onclick="getSource()">事务测试</button>
+    <button id="query" onclick="exprotEmp()">导出</button>
+    <form enctype="multipart/form-data" action="/emp/importEmp" id="form1" method="post"  >
+    <label style="text-align: right;">请选择Excel：</label>
+	<input id="url" name="url" type="file"/>
+	</form>
+	<button  onclick="importEmp()" style="margin-left: 400px">Excel导入</button>
+	<p></p>
+<table id="project" style="BORDER-COLLAPSE: collapse" borderColor=#999999 cellSpacing=0 width=1000  bgColor=#ffffff border=1>
+
+</table>
+</div>
+
+<script src="jquery-1.10.2.js"></script>
+<script src="ajaxfileupload.js"></script>
+<script>
+
+//导入emp
+function importEmp(){
+	var userId = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+	if (checkData()) {
+		$.ajaxFileUpload({ 
+	        method:"post",
+	        url:"/emp/importEmpHead?userId="+userId,//需要链接到服务器地址  
+	        secureuri:false,  
+	        fileElementId:'url',//文件选择框的id属性 
+	        dataType:'json', //返回值类型 一般设置为json
+	        success: function(data,status){ 
+	         //上传成功之后的操作  
+	          alert(data.path);
+	      	  $.each(data.list, function (n, value) {
+	         		 alert(value+"-"+data.head[n]);
+	         		 
+	              });
+	      	  
+	        },error: function (data, status, e){ 
+	         //上传失败之后的操作
+	         alert(500);
+	        }  
+		 });
+	}
+
+}
+
+
+
+//JS校验form表单信息
+function checkData() {
+    var fileDir = $("#url").val();
+    var suffix = fileDir.substr(fileDir.lastIndexOf("."));
+    if ("" == fileDir) {
+        alert('选择需要导入的Excel文件！');
+        return false;
+    }
+    if (".xls" != suffix && ".xlsx" != suffix) {
+        alert('选择Excel格式的文件导入！');
+        return false;
+    }
+    return true;
+}
+//导出emp
+function exprotEmp(){
+	 var data = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+	 var newWindow = window.open("_blank");
+     newWindow.location = "/emp/export?userId="+data;
+}
+
+function getSource(){
+	var num=$("#num").val();
+	var source=$("#source").val();
+	var newWindow = window.open("_blank");
+    newWindow.location ="trans.html?source="+source+"&num="+num+"";
+}
+
+function get(){
+	 
+    var data = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+    
+    $("table tbody").html("");
+    
+	 $.ajax({  
+         url:"/emp/list",  
+         type:"POST",  
+         data:{"userId":data},
+         async: false,
+        // contentType:"application/json",
+         success:function(data)   
+         {   
+         	var tbody = "";
+         	  $.each(data, function (n, value) {
+         		 var trs = "";
+                   trs += "<tr><td>" + value.id + "</td> <td>" + value.empname + "</td><td>" + value.deptno+ "</td><td>" + value.h+ "</td><td>" + value.salary+ "</td><td>" + value.birthdate+ "</td><td><button  onclick='del("+value.id+")''>删除|</button><button  onclick='update("+value.id+")''>修改</button></td></tr>";
+                   tbody += trs;
+               });
+         	  
+         	 var tr="<tr><td>ID</td><td>姓名</td><td>部门</td><td>编号</td><td>薪资</td><td>生日</td><td colspan='2'>操作</td></tr>";
+             $("#project").append(tr+tbody);
+         },  
+         error: function(data){  
+           //  alert('error');  
+           alert("感觉不太妙")
+         }  
+         });  
+	 
+}
+
+function del(id){
+	  //var data = "jkyun_test"+$("#num").val()+"_rds01";
+	  var data = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+	  $.ajax({  
+         url:"/emp/delete",  
+         type:"get",  
+         data:{"userId":data,"empId":id},
+         async: false,
+        // contentType:"application/json",
+         success:function(data)   
+         {   
+         	 alert(data);
+         	get();
+         },  
+         error: function(data){  
+           //  alert('error');  
+           alert("感觉不太妙")
+         }  
+         });  
+	
+}
+
+function update(id){
+	//self.location='modify.html'; 
+	//var data = "jkyun_test"+$("#num").val()+"_rds01";
+	//var num=$("#num").val();
+	var data = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+	var num=$("#num").val();
+	var source=$("#source").val();
+	$.ajax({  
+        url:"/emp/findBy",  
+        type:"get",  
+        data:{"userId":data,"empId":id},
+        async: false,
+        success:function(temp)   
+        {   
+        	console.log(temp);
+        	window.location.href = "modify.html?userId="+data+"&num="+num+"&source="+source+"&id="+id+"&empname="+temp.empname+"&deptno="+temp.deptno+"&birthdate="+temp.birthdate+"&h="+temp.h+"&salary="+temp.salary+"";
+        },  
+        error: function(data){  
+          //  alert('error');  
+          alert("感觉不太妙")
+        }  
+        });  
+}
+
+function add(id){
+	//self.location='modify.html'; 
+	//var data = "jkyun_test"+$("#num").val()+"_rds01";
+	var data = "jkyun_test"+$("#num").val()+"_rds0"+$("#source").val();
+	var num=$("#num").val();
+	var source=$("#source").val();
+	window.location.href = "modify.html?userId="+data+"&num="+num+"&source="+source+"";
+}
+
+$(function () {
+  	
+	        $.ajax({  
+	            url:"/emp/list",  
+	            type:"POST",  
+	            data:{"userId":"jkyun_test1_rds01"},
+	            async: false,
+	           // contentType:"application/json",
+	            success:function(data)   
+	            {   
+	            	var tbody = "";
+	            	  $.each(data, function (n, value) {
+	                      var trs = "";
+	                      trs += "<tr><td>" + value.id + "</td> <td>" + value.empname + "</td><td>" + value.deptno+ "</td><td>" + value.h+ "</td><td>" + value.salary+ "</td><td>" + value.birthdate+ "</td><td><button  onclick='del("+value.id+")''>删除|</button><button  onclick='update("+value.id+")''>修改</button></td></tr>";
+	                      tbody += trs;
+	                  });
+	            	  var tr="<tr><td>ID</td><td>姓名</td><td>部门</td><td>编号</td><td>薪资</td><td>生日</td><td colspan='2'>操作</td></tr>";
+	                  $("#project").append(tr+tbody);
+	            },  
+	            error: function(data){  
+	              //  alert('error');  
+	              alert("感觉不太妙")
+	            }  
+	            });  
+
+	    });  
+</script>
+
+
+</body>
+</html>
