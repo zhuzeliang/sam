@@ -11,7 +11,7 @@
 <body>
     <svg width="200" height="250">
         <rect x="1" y="1" width="30" height="30" stroke="black" fill="transparent" stroke-width="1" />
-       <!--  <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5" />
+        <!--  <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5" />
         <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="5" />
         <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5" />
         <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="5" />
@@ -20,5 +20,13 @@
         <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5" /> -->
     </svg>
 </body>
+<script>
+function getType(a) {
+    var typeArray = Object.prototype.toString.call(a).split(" ");
+    return typeArray[1].slice(0, this.length - 1);
+}
+console.log(Object.prototype.toString.call(1).split(" "));
+console.log(getType(1))
+</script>
 
 </html>
